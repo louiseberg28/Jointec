@@ -9,13 +9,13 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/home";
 
   // Mix of in-page anchors (when on home) and full anchors (when on a sub-page)
-  const machinesHref = isHome ? "#machines" : "/#machines";
-  const capeHref     = isHome ? "#cape"     : "/#cape";
-  const servicesHref = isHome ? "#services" : "/#services";
-  const contactHref  = isHome ? "#contact"  : "/#contact";
+  const machinesHref = isHome ? "#machines" : "/home#machines";
+  const capeHref     = isHome ? "#cape"     : "/home#cape";
+  const servicesHref = isHome ? "#services" : "/home#services";
+  const contactHref  = isHome ? "#contact"  : "/home#contact";
 
   const navItems = [
     { label: t("navbar.machines"), href: machinesHref, kind: "anchor" },
@@ -47,7 +47,7 @@ function Navbar() {
     >
       <div className="section-shell flex items-center justify-between gap-4 py-4 sm:py-5">
         <Link
-          to="/"
+          to="/about"
           className="logo mr-2 inline-flex shrink-0 items-center sm:mr-4"
           aria-label={t("navbar.homeLabel")}
         >

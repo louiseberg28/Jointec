@@ -181,7 +181,7 @@ export default function CasesPage() {
                 {labels.ctaBody}
               </p>
             </div>
-            <Link to="/#contact" className="primary-button">
+            <Link to="/home#contact" className="primary-button">
               {labels.ctaButton}
             </Link>
           </div>

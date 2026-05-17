@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import App from "./App";
 import AboutPage from "./pages/About";
 import CasesPage from "./pages/Cases";
@@ -14,7 +14,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Navigate to="/about" replace />} />
+        <Route path="/home" element={<App />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cases" element={<CasesPage />} />
         <Route path="/news" element={<NewsPage />} />

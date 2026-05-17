@@ -30,7 +30,7 @@ function Footer() {
             <li><Link to="/machines/klotsproduktionslinje" className="hover:text-brand-accent">Klotsproduktionslinje</Link></li>
             <li><Link to="/machines/plastning-nonstop" className="hover:text-brand-accent">Plastning Nonstop</Link></li>
             <li><Link to="/machines/topfoil-pallet" className="hover:text-brand-accent">Topfoil Pallet</Link></li>
-            <li><a href="/#cape" className="hover:text-brand-accent">{t("footer.cape_link")}</a></li>
+            <li><a href="/home#cape" className="hover:text-brand-accent">{t("footer.cape_link")}</a></li>
           </ul>
         </div>
 
@@ -40,9 +40,9 @@ function Footer() {
             {t("footer.col_company")}
           </p>
           <ul className="mt-5 space-y-3 text-sm text-brand-dark/72">
-            <li><a href="/#about" className="hover:text-brand-accent">{t("footer.about_link")}</a></li>
-            <li><a href="/#services" className="hover:text-brand-accent">{t("footer.services_link")}</a></li>
-            <li><a href="/#contact" className="hover:text-brand-accent">{t("footer.contact_link")}</a></li>
+            <li><Link to="/about" className="hover:text-brand-accent">{t("footer.about_link")}</Link></li>
+            <li><a href="/home#services" className="hover:text-brand-accent">{t("footer.services_link")}</a></li>
+            <li><a href="/home#contact" className="hover:text-brand-accent">{t("footer.contact_link")}</a></li>
             <li>
               <a
                 href="https://www.linkedin.com/company/108651152/"

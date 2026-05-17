@@ -15,7 +15,7 @@ export default function MachinePage() {
   }, [slug]);
 
   if (!detail) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/about" replace />;
   }
 
   // Pull translated content
@@ -52,7 +52,7 @@ export default function MachinePage() {
             <div className="max-w-3xl">
               <div className="flex items-center gap-3">
                 <Link
-                  to="/#machines"
+                  to="/home#machines"
                   className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55 transition hover:text-brand-accent"
                 >
                   ← {labels.back}
