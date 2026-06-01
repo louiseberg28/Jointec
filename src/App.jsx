@@ -5,7 +5,6 @@ import Hero from "./components/Hero";
 import Machines from "./components/Machines";
 import Navbar from "./components/Navbar";
 import PhotoStrip from "./components/PhotoStrip";
-import ProcessVideo from "./components/ProcessVideo";
 import Services from "./components/Services";
 import VideoSection from "./components/VideoSection";
 import { useTranslation } from "react-i18next";
@@ -33,7 +32,6 @@ function App() {
           align="right"
         />
         <CapeAgent />
-        <ProcessVideo />
         <VideoSection />
         <Services />
       </main>
