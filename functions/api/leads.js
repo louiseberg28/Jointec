@@ -179,7 +179,7 @@ export async function onRequestPost({ request, env }) {
         error: "Lead integration failed.",
         detail: error instanceof Error ? error.message : "Unknown error",
       },
-      502,
+      500,
     );
   }
 }
