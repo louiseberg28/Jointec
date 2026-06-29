@@ -25,6 +25,30 @@ const interestTranslationKeys = {
   "General equipment and solution updates": "generalUpdates",
 };
 
+function createFallbackMailto(lead) {
+  const subject = encodeURIComponent(`Jointec updates signup - ${lead.company}`);
+  const body = encodeURIComponent(
+    [
+      "Hello Jointec,",
+      "",
+      "A visitor tried to submit the website updates form, but the direct signup service was unavailable.",
+      "",
+      `Name: ${lead.name}`,
+      `Company: ${lead.company}`,
+      `Email: ${lead.email}`,
+      `Phone: ${lead.phone || ""}`,
+      `Country: ${lead.country}`,
+      `Solution interest: ${lead.machineInterest}`,
+      `Source page: ${lead.sourcePage}`,
+      `Message: ${lead.message || ""}`,
+      "",
+      "Consent: The visitor checked the updates consent box.",
+    ].join("\n"),
+  );
+
+  return `mailto:info@jointec.se?subject=${subject}&body=${body}`;
+}
+
 export default function MachineUpdatesSignup({ sourcePage }) {
   const { t } = useTranslation();
   const [form, setForm] = useState(initialForm);
@@ -65,9 +89,10 @@ export default function MachineUpdatesSignup({ sourcePage }) {
       if (!response.ok) throw new Error("Lead API unavailable");
     } catch (error) {
       if (!import.meta.env.DEV) {
+        window.location.href = createFallbackMailto(lead);
         setState({
-          status: "error",
-          message: t("signup.messages.errorDetail"),
+          status: "fallback",
+          message: t("signup.messages.fallbackDetail"),
         });
         return;
       }
@@ -160,9 +185,19 @@ export default function MachineUpdatesSignup({ sourcePage }) {
           </p>
 
           {state.status !== "idle" ? (
-            <div className={`mt-5 rounded-2xl p-4 text-sm leading-6 ${state.status === "success" ? "bg-emerald-50 text-emerald-900" : "bg-red-50 text-red-900"}`}>
+            <div className={`mt-5 rounded-2xl p-4 text-sm leading-6 ${
+              state.status === "success"
+                ? "bg-emerald-50 text-emerald-900"
+                : state.status === "fallback"
+                  ? "bg-amber-50 text-amber-950"
+                  : "bg-red-50 text-red-900"
+            }`}>
               <p className="font-semibold">
-                {state.status === "success" ? t("signup.messages.successTitle") : t("signup.messages.errorTitle")}
+                {state.status === "success"
+                  ? t("signup.messages.successTitle")
+                  : state.status === "fallback"
+                    ? t("signup.messages.fallbackTitle")
+                    : t("signup.messages.errorTitle")}
               </p>
               <p className="mt-1">{state.message}</p>
             </div>

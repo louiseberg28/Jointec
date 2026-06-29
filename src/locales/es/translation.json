@@ -803,6 +803,8 @@
     "messages": {
       "successTitle": "Gracias. Hemos registrado su interés.",
       "successDetail": "Gracias. Hemos registrado su interés. Jointec solo enviará actualizaciones relevantes sobre equipos, soluciones, demostraciones, sitios de clientes y eventos del sector.",
+      "fallbackTitle": "Borrador de email abierto.",
+      "fallbackDetail": "El servicio directo de registro no está disponible temporalmente, por lo que hemos abierto un email precompletado para Jointec con sus datos. Envíelo para completar la solicitud.",
       "errorTitle": "Algo salió mal.",
       "errorDetail": "Algo salió mal. Inténtelo de nuevo o contacte directamente con Jointec en info@jointec.se."
     }

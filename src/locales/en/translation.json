@@ -803,6 +803,8 @@
     "messages": {
       "successTitle": "Thank you. Your interest has been registered.",
       "successDetail": "Thank you. Your interest has been registered. Jointec will only send relevant updates about equipment, solutions, demonstrations, customer sites and industry events.",
+      "fallbackTitle": "Email draft opened.",
+      "fallbackDetail": "The direct signup service is temporarily unavailable, so we opened a prefilled email to Jointec with your details. Please send that email to complete the request.",
       "errorTitle": "Something went wrong.",
       "errorDetail": "Something went wrong. Please try again or contact Jointec directly at info@jointec.se."
     }

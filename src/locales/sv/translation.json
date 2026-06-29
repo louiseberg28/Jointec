@@ -803,6 +803,8 @@
     "messages": {
       "successTitle": "Tack. Ditt intresse har registrerats.",
       "successDetail": "Tack. Ditt intresse har registrerats. Jointec skickar endast relevanta uppdateringar om utrustning, lösningar, demonstrationer, kundanläggningar och branschevenemang.",
+      "fallbackTitle": "E-postutkast öppnat.",
+      "fallbackDetail": "Den direkta registreringen är tillfälligt otillgänglig, så vi har öppnat ett förifyllt mejl till Jointec med dina uppgifter. Skicka mejlet för att slutföra förfrågan.",
       "errorTitle": "Något gick fel.",
       "errorDetail": "Något gick fel. Försök igen eller kontakta Jointec direkt på info@jointec.se."
     }

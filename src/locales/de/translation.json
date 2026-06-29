@@ -779,6 +779,8 @@
     "messages": {
       "successTitle": "Vielen Dank. Ihr Interesse wurde registriert.",
       "successDetail": "Vielen Dank. Ihr Interesse wurde registriert. Jointec sendet nur relevante Updates zu Ausrüstung, Lösungen, Demonstrationen, Kundenstandorten und Branchenveranstaltungen.",
+      "fallbackTitle": "E-Mail-Entwurf geöffnet.",
+      "fallbackDetail": "Der direkte Anmeldedienst ist vorübergehend nicht verfügbar. Deshalb wurde eine vorausgefüllte E-Mail an Jointec mit Ihren Angaben geöffnet. Bitte senden Sie diese E-Mail, um die Anfrage abzuschließen.",
       "errorTitle": "Etwas ist schiefgelaufen.",
       "errorDetail": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie Jointec direkt unter info@jointec.se."
     }

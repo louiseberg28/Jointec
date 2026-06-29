@@ -779,6 +779,8 @@
     "messages": {
       "successTitle": "Merci. Votre intérêt a été enregistré.",
       "successDetail": "Merci. Votre intérêt a été enregistré. Jointec enverra uniquement des actualités pertinentes sur les équipements, les solutions, les démonstrations, les sites clients et les événements industriels.",
+      "fallbackTitle": "Brouillon d’email ouvert.",
+      "fallbackDetail": "Le service d’inscription directe est temporairement indisponible. Nous avons donc ouvert un email prérempli à destination de Jointec avec vos informations. Veuillez l’envoyer pour finaliser la demande.",
       "errorTitle": "Une erreur est survenue.",
       "errorDetail": "Une erreur est survenue. Veuillez réessayer ou contacter Jointec directement à info@jointec.se."
     }
