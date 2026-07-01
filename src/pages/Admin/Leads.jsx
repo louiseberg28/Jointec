@@ -8,8 +8,9 @@ export default function AdminLeadsPage() {
     loading: true,
     authenticated: false,
     adminConfigured: false,
-    microsoftConfigured: false,
-    missingMicrosoftEnv: [],
+    databaseConfigured: false,
+    missingDatabaseEnv: [],
+    emailConfigured: false,
     apiUnavailable: false,
   });
   const [password, setPassword] = useState("");
@@ -37,8 +38,9 @@ export default function AdminLeadsPage() {
           loading: false,
           authenticated: true,
           adminConfigured: false,
-          microsoftConfigured: false,
-          missingMicrosoftEnv: [],
+          databaseConfigured: false,
+          missingDatabaseEnv: [],
+          emailConfigured: false,
           apiUnavailable: true,
         });
         setLeads(readDevelopmentLeads());
@@ -130,7 +132,7 @@ export default function AdminLeadsPage() {
       if (!response.ok) throw new Error("Lead update failed.");
     } catch {
       setLeads(previous);
-      setLoadError("Could not update the lead in Microsoft Lists. Please try again.");
+      setLoadError("Could not update the lead database. Please try again.");
     }
   };
 
@@ -163,7 +165,7 @@ export default function AdminLeadsPage() {
           {!session.adminConfigured ? (
             <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
               Admin login is not configured yet. Add `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET`
-              as environment variables in Vercel before production.
+              as environment variables in Cloudflare before production.
             </div>
           ) : null}
 
@@ -275,22 +277,25 @@ function ConnectionStatus({ session, loadError }) {
       <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
         <p className="font-semibold">Local preview mode</p>
         <p className="mt-2">
-          This Vite preview cannot run Vercel API routes, so it shows test leads stored in this
+          This Vite preview cannot run Cloudflare Pages Functions, so it shows test leads stored in this
           browser. After deployment, this page requires the private admin password and reads from
-          Microsoft Lists.
+          the Cloudflare lead database.
         </p>
       </div>
     );
   }
 
-  if (loadError || !session.microsoftConfigured) {
+  if (loadError || !session.databaseConfigured) {
     return (
       <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
-        <p className="font-semibold">Microsoft Lists connection still needs configuration</p>
+        <p className="font-semibold">Lead database still needs configuration</p>
         <p className="mt-2">
-          Admin login is active, but Microsoft Lists cannot be used until these Vercel environment
-          variables are set: {(session.missingMicrosoftEnv || []).join(", ") || "Microsoft Graph credentials"}.
+          Admin login is active, but leads cannot be stored until this Cloudflare D1 binding is set:
+          {" "}{(session.missingDatabaseEnv || []).join(", ") || "JOINTEC_DB"}.
         </p>
+        {!session.emailConfigured ? (
+          <p className="mt-2">Email sending also needs `RESEND_API_KEY` before automatic emails are sent.</p>
+        ) : null}
         {loadError ? <p className="mt-2">Current error: {loadError}</p> : null}
       </div>
     );
@@ -298,11 +303,14 @@ function ConnectionStatus({ session, loadError }) {
 
   return (
     <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950">
-      <p className="font-semibold">Connected to Microsoft Lists</p>
+      <p className="font-semibold">Connected to the lead database</p>
       <p className="mt-2">
-        Website form submissions are stored in Microsoft Lists. This admin page reads the same list
-        and can update lead status and notes.
+        Website form submissions are stored in Cloudflare D1. This admin page reads the same database
+        and can update lead status and notes. CSV export can be opened in Excel.
       </p>
+      {!session.emailConfigured ? (
+        <p className="mt-2">Email sending is not active yet. Add `RESEND_API_KEY` in Cloudflare to send automatic emails.</p>
+      ) : null}
     </div>
   );
 }
